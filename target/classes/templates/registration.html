@@ -1,253 +1,96 @@
-<!--<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-    <style>
-        body {
-            padding-top: 70px;
-            background: url('/images/mayank.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .navbar-brand {
-            font-size: 24px;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .btn-success {
-            background-color: #5cb85c;
-            border-color: #4cae4c;
-            width: 100%;
-        }
-        .btn-success:hover {
-            background-color: #4cae4c;
-            border-color: #398439;
-        }
-        .login-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .login-link a {
-            color: #337ab7;
-            text-decoration: none;
-        }
-        .login-link a:hover {
-            color: #23527c;
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" th:href="@{/}">Registration and Login Module</a>
-        </div>
-    </div>
-</nav>
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-
-            <div th:if="${param.success}">
-                <div class="alert alert-info">You've successfully registered, Thank you!</div>
-            </div>
-
-            <h1>Registration</h1>
-
-            <form th:action="@{/registration}" method="post" th:object="${user}">
-                <div class="form-group">
-                    <label class="control-label" for="firstName">First Name</label>
-                    <input id="firstName" class="form-control" th:field="*{firstName}"
-                           required autofocus="autofocus" placeholder="Enter your first name"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="lastName">Last Name</label>
-                    <input id="lastName" class="form-control" th:field="*{lastName}"
-                           required placeholder="Enter your last name"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="email">Email</label>
-                    <input id="email" class="form-control" th:field="*{email}" type="email"
-                           required placeholder="Enter your email address"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="password">Password</label>
-                    <input id="password" class="form-control" th:field="*{password}" type="password"
-                           required placeholder="Enter your password"/>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">Register</button>
-                    <span class="login-link">Already registered? <a th:href="@{/login}">Login here</a></span>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-</body>
-</html>
--->
-
-
-
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="ISO-8859-1">
-    <title>User Registration</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-    <style>
-        body {
-            background: #f8f9fa;
-            padding-top: 70px;
-        }
+	<meta charset="ISO-8859-1">
+	<title>Registration</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        .navbar-brand {
-            font-size: 24px;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2em;
-            color: #000;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            width: 100%;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
-        .alert {
-            text-align: center;
-        }
-
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        .login-link a:hover {
-            color: #0056b3;
-            text-decoration: underline;
-        }
-    </style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
 </head>
+
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                    aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#" th:href="@{/}">Secure User Management</a>
-        </div>
-    </div>
-</nav>
+	create navigation bar ( header)
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Secure-User-Management-System</a>
+			</div>
+		</div>
+	</nav>
 
-<div class="container">
-    <h1>Register</h1>
-    <form th:action="@{/registration}" method="post">
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName"
-                   placeholder="Enter your first name" required>
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName"
-                   placeholder="Enter your last name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email"
-                   placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password"
-                   placeholder="Enter your password" required>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Register</button>
-        </div>
-    </form>
-    <div class="login-link">
-        <span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
-    </div>
-</div>
+	<br>
+	<br>
+		<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered
+						to our awesome app!</div>
+				</div>
 
-<!-- Include jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfTU7RV9iOYqU4f2o0Rj3K7jqMxj76juxObFQ4b8J"
-        crossorigin="anonymous"></script>
+				<h1>Sign Up</h1>
+
+				<form th:action="@{/registration}" method="post" th:object="${user}">
+					<div class="form-group">
+						<label class="control-label" for="firstName"> First Name </label>
+						<input id="firstName" class="form-control" th:field="*{firstName}"
+							placeholder="Enter your first name" autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="lastName"> Last Name </label> <input id="lastName"
+							class="form-control" th:field="*{lastName}" placeholder="Enter your last name"
+							autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="email"> Email </label> <input id="email" class="form-control"
+							th:field="*{email}" placeholder="Enter your email" autofocus="autofocus" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label" for="password"> Password </label> <input id="password"
+							class="form-control" type="password" th:field="*{password}"
+							placeholder="Enter your password" autofocus="autofocus" />
+					</div>
+
+					<!--<div class="form-group">
+						<label class="control-label" for="number"> Number </label> <input id="number"
+							class="form-control" type="tel" th:field="*{number}" placeholder="Enter your mobile number"
+							autofocus="autofocus" />
+					</div>-->
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-success">Register</button>
+						<span>Already registered? <a href="/" th:href="@{/login}">Login
+								here</a></span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+	<script>
+		var input = document.querySelector("#phone");
+		window.intlTelInput(input, {
+			initialCountry: "auto",
+			geoIpLookup: function (success, failure) {
+				fetch('https://ipinfo.io', {headers: {'Accept': 'application/json'}})
+					.then(function (resp) {return resp.json();})
+					.then(function (resp) {success(resp.country);})
+					.catch(function () {success('us');});
+			},
+			utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+		});
+	</script>
 </body>
+
 </html>

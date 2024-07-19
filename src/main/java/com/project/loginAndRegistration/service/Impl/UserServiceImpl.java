@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService{
 	public User save(UserRegistrationDto registrationDto) {
 		User user = new User(registrationDto.getFirstName(), 
 				registrationDto.getLastName(), registrationDto.getEmail(),
-				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Roles("ROLE_USER")));
+				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Roles("ROLE_USER")), registrationDto.getNumber());
 		
 		return userRepository.save(user);
 	}
@@ -55,5 +55,4 @@ public class UserServiceImpl implements UserService{
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Roles> roles){
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
-	
 }

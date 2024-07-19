@@ -5,17 +5,19 @@ public class UserRegistrationDto {
 	private String lastName;
 	private String email;
 	private String password;
+	private String number;
 	
 	public UserRegistrationDto(){
 		
 	}
 	
-	public UserRegistrationDto(String firstName, String lastName, String email, String password) {
+	public UserRegistrationDto(String firstName, String lastName, String email, String password, String number) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
+		this.number = number;
 	}
 	
 	public String getFirstName() {
@@ -41,5 +43,12 @@ public class UserRegistrationDto {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 }

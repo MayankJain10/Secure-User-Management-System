@@ -41,6 +41,9 @@ public class User {
 	
 	private String password;
 	
+	@Column(name = "mob_number")
+	private String number;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "users_roles",
@@ -55,14 +58,17 @@ public class User {
 		
 	}
 	
-	public User(String firstName, String lastName, String email, String password, Collection<Roles> roles) {
+	public User(String firstName, String lastName, String email, String password, Collection<Roles> roles, String number) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.roles = roles;
+		this.number = number;
 	}
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -98,6 +104,14 @@ public class User {
 	}
 	public void setRoles(Collection<Roles> roles) {
 		this.roles = roles;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
 }
